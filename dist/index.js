@@ -21,10 +21,10 @@ class OpenAI {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let completion = yield this.openai.createCompletion({
-                    model: 'text-davinci-003',
+                    model: this.config.model,
                     prompt: prompt,
-                    temperature: 0,
-                    max_tokens: 1024
+                    temperature: this.config.temperature,
+                    max_tokens: this.config.max_tokens
                 });
                 if (!completion.data.choices[0].text) {
                     console.error('No response from OpenAI');

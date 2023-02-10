@@ -13,10 +13,10 @@ class OpenAI {
   async complete(prompt: string) {
     try {
       let completion = await this.openai.createCompletion({
-        model: 'text-davinci-003',
+        model: this.config.model,
         prompt: prompt,
-        temperature: 0,
-        max_tokens: 1024
+        temperature: this.config.temperature,
+        max_tokens: this.config.max_tokens
       });
 
       if (!completion.data.choices[0].text) {
