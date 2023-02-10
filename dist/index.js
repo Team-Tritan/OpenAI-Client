@@ -47,10 +47,10 @@ class OpenAI {
         });
     }
 }
-const write = () => {
+let write = () => {
     process.stdin.write('  > ');
 };
-const handlePrompt = () => __awaiter(void 0, void 0, void 0, function* () {
+(() => __awaiter(void 0, void 0, void 0, function* () {
     const AI = new OpenAI();
     if (process.argv.length > 2) {
         let prompt = '';
@@ -70,5 +70,4 @@ const handlePrompt = () => __awaiter(void 0, void 0, void 0, function* () {
         console.log(` => ${res}`);
         write();
     }));
-});
-handlePrompt();
+}))();

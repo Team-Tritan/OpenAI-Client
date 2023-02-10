@@ -41,11 +41,11 @@ class OpenAI {
   }
 }
 
-const write = () => {
+let write = () => {
   process.stdin.write('  > ');
 };
 
-const handlePrompt = async () => {
+(async () => {
   const AI = new OpenAI();
 
   if (process.argv.length > 2) {
@@ -76,6 +76,4 @@ const handlePrompt = async () => {
 
     write();
   });
-};
-
-handlePrompt();
+})();
