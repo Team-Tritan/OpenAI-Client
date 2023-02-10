@@ -57,7 +57,9 @@ const handlePrompt = async () => {
     }
 
     let res = await AI.complete(prompt);
-    console.log(`Prompt: ${prompt}` + '\n' + `Response: ${res}`);
+
+    console.log(`Prompt: ${prompt}`);
+    console.log(`Response: ${res}`);
 
     process.exit(0);
   }
