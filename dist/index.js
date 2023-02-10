@@ -48,7 +48,7 @@ class OpenAI {
     }
 }
 const write = () => {
-    process.stdin.write(' > ');
+    process.stdin.write('  > ');
 };
 const handlePrompt = () => __awaiter(void 0, void 0, void 0, function* () {
     // Init OpenAI
@@ -68,7 +68,7 @@ const handlePrompt = () => __awaiter(void 0, void 0, void 0, function* () {
     stdin.addListener('data', (d) => __awaiter(void 0, void 0, void 0, function* () {
         let input = d.toString().trim();
         let res = yield AI.complete(input);
-        console.log(` => Response: ${res}`);
+        console.log(` => ${res}`);
         write();
     }));
 });
