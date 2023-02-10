@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const memory_1 = require("./lib/memory");
 const OpenAI_1 = require("./lib/OpenAI");
 (() => __awaiter(void 0, void 0, void 0, function* () {
     const AI = new OpenAI_1.default();
@@ -26,7 +27,12 @@ const OpenAI_1 = require("./lib/OpenAI");
     (0, OpenAI_1.write)();
     stdin.addListener('data', (d) => __awaiter(void 0, void 0, void 0, function* () {
         let input = d.toString().trim();
-        let res = yield AI.complete(input);
+        memory_1.default.writeMemory(`User: ${input}`);
+        const memories = memory_1.default.getMemory();
+        const prompt = `\nHuman: ${input}`;
+        const final = memories + prompt;
+        let res = yield AI.complete(final);
+        memory_1.default.writeMemory(`Bot: ${res}`);
         console.log(` => ${res}`);
         (0, OpenAI_1.write)();
     }));
