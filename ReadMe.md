@@ -1,5 +1,5 @@
-## Ez GPT3 Model
+## Ez Davinci Model
 
 - yarn install
-- "yarn build"
-- "yarn start <prompt>"
+- yarn build
+- yarn start {prompt here}
