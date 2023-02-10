@@ -18,4 +18,4 @@ Build typescript to javascript
 
 Run javascript :)
 
-- `yarn start prompt` or `npm start {prompt}`
+- `yarn start {prompt}` or `npm start {prompt}`
