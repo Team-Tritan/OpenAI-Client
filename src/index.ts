@@ -43,6 +43,9 @@ const write = () => {
 };
 
 const handlePrompt = async () => {
+  // Init OpenAI
+  const AI = new OpenAI();
+
   if (process.argv.length > 2) {
     let prompt = '' as string;
 
@@ -50,7 +53,7 @@ const handlePrompt = async () => {
       prompt += process.argv[i] + ' ';
     }
 
-    let res = await new OpenAI().complete(prompt);
+    let res = await AI.complete(prompt);
     console.log(`Prompt: ${prompt}` + '\n' + `Response: ${res}`);
 
     process.exit(0);
@@ -64,11 +67,7 @@ const handlePrompt = async () => {
   stdin.addListener('data', async d => {
     let input = d.toString().trim();
 
-    // new OpenAI().complete(input).then(res => {
-    //   console.log('\n' + `Response: ${res}`);
-    // });
-
-    let res = await new OpenAI().complete(input);
+    let res = await AI.complete(input);
 
     console.log(` => Response: ${res}`);
 

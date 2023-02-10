@@ -47,12 +47,14 @@ const write = () => {
     process.stdin.write(' > ');
 };
 const handlePrompt = () => __awaiter(void 0, void 0, void 0, function* () {
+    // Init OpenAI
+    const AI = new OpenAI();
     if (process.argv.length > 2) {
         let prompt = '';
         for (let i = 2; i < process.argv.length; i++) {
             prompt += process.argv[i] + ' ';
         }
-        let res = yield new OpenAI().complete(prompt);
+        let res = yield AI.complete(prompt);
         console.log(`Prompt: ${prompt}` + '\n' + `Response: ${res}`);
         process.exit(0);
     }
@@ -61,10 +63,7 @@ const handlePrompt = () => __awaiter(void 0, void 0, void 0, function* () {
     write();
     stdin.addListener('data', (d) => __awaiter(void 0, void 0, void 0, function* () {
         let input = d.toString().trim();
-        // new OpenAI().complete(input).then(res => {
-        //   console.log('\n' + `Response: ${res}`);
-        // });
-        let res = yield new OpenAI().complete(input);
+        let res = yield AI.complete(input);
         console.log(` => Response: ${res}`);
         write();
     }));
