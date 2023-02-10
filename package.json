@@ -1,4 +1,19 @@
 {
+  "name": "open-ai-shit",
+  "version": "1.0.0",
+  "description": "AAAAAAAAAAAAAAAAAA",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc --build",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team-tritan/OpenAI.git"
+  },
+  "author": " <github/dylanjamesdev>",
+  "license": "MIT",
+  "homepage": "https://github.com/dylanjamesdev/OpenAI#readme",
   "dependencies": {
     "@types/node": "^18.13.0",
     "openai": "^3.1.0"
