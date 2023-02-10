@@ -28,7 +28,7 @@ for (let i = 2; i < process.argv.length; i++) {
 
     console.log("Prompt: " + prompt);
     console.log(completion.data.choices[0].text);
-  } catch (error: any) {
+  } catch (error: Error | any) {
     if (error.response) {
       console.error(error.response.status);
       return console.error(error.response.data);
