@@ -7,7 +7,26 @@ export default class OpenAI {
 
   constructor() {
     let configuration = new Configuration({ apiKey: this.config.apiKey });
+
     this.openai = new OpenAIApi(configuration);
+    this.checkConfig();
+  }
+
+  async checkConfig() {
+    if (!this.config.apiKey) {
+      console.error('No API key provided');
+      process.exit(1);
+    }
+
+    if (!this.config.model) {
+      console.error('No model provided');
+      process.exit(1);
+    }
+
+    if (!this.config.max_tokens) {
+      console.error('No max tokens provided');
+      process.exit(1);
+    }
   }
 
   async complete(prompt: string) {

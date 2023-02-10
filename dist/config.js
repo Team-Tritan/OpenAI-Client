@@ -6,6 +6,7 @@ class Config {
         this.model = 'text-davinci-003';
         this.temperature = 0;
         this.max_tokens = 1024;
+        return this;
     }
 }
 exports.default = Config;

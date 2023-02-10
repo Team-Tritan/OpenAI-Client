@@ -17,6 +17,23 @@ class OpenAI {
         this.config = new config_1.default();
         let configuration = new openai_1.Configuration({ apiKey: this.config.apiKey });
         this.openai = new openai_1.OpenAIApi(configuration);
+        this.checkConfig();
+    }
+    checkConfig() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!this.config.apiKey) {
+                console.error('No API key provided');
+                process.exit(1);
+            }
+            if (!this.config.model) {
+                console.error('No model provided');
+                process.exit(1);
+            }
+            if (!this.config.max_tokens) {
+                console.error('No max tokens provided');
+                process.exit(1);
+            }
+        });
     }
     complete(prompt) {
         return __awaiter(this, void 0, void 0, function* () {
