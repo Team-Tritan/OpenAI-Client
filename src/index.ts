@@ -27,24 +27,16 @@ import OpenAI, { write } from './lib/OpenAI';
     let input = d.toString().trim();
     Memory.writeMemory(`User: ${input}`);
 
-    let msg = '';
-
     const memories = Memory.getMemory();
-
-    if (memories !== '') {
-      msg = memories;
-    }
-
     const prompt = `\nHuman: ${input}`;
 
-    const final = msg + prompt;
+    const final = memories + prompt;
 
     let res = await AI.complete(final);
     Memory.writeMemory(`Bot: ${res}`);
 
     console.log(` => ${res}`);
 
-    console.log(Memory.getMemory());
     write();
   });
 })();
