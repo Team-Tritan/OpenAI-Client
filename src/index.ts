@@ -42,7 +42,7 @@ class OpenAI {
 }
 
 const write = () => {
-  process.stdin.write(' > ');
+  process.stdin.write('  > ');
 };
 
 const handlePrompt = async () => {
@@ -72,7 +72,7 @@ const handlePrompt = async () => {
 
     let res = await AI.complete(input);
 
-    console.log(` => Response: ${res}`);
+    console.log(` => ${res}`);
 
     write();
   });
