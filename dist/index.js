@@ -59,7 +59,8 @@ const handlePrompt = () => __awaiter(void 0, void 0, void 0, function* () {
             prompt += process.argv[i] + ' ';
         }
         let res = yield AI.complete(prompt);
-        console.log(`Prompt: ${prompt}` + '\n' + `Response: ${res}`);
+        console.log(`Prompt: ${prompt}`);
+        console.log(`Response: ${res}`);
         process.exit(0);
     }
     // Active CLI
