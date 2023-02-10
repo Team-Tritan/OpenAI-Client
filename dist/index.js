@@ -51,7 +51,6 @@ const write = () => {
     process.stdin.write('  > ');
 };
 const handlePrompt = () => __awaiter(void 0, void 0, void 0, function* () {
-    // Init OpenAI
     const AI = new OpenAI();
     if (process.argv.length > 2) {
         let prompt = '';
@@ -63,7 +62,6 @@ const handlePrompt = () => __awaiter(void 0, void 0, void 0, function* () {
         console.log(`Response: ${res}`);
         process.exit(0);
     }
-    // Active CLI
     const stdin = process.openStdin();
     write();
     stdin.addListener('data', (d) => __awaiter(void 0, void 0, void 0, function* () {

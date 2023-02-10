@@ -46,7 +46,6 @@ const write = () => {
 };
 
 const handlePrompt = async () => {
-  // Init OpenAI
   const AI = new OpenAI();
 
   if (process.argv.length > 2) {
@@ -64,7 +63,6 @@ const handlePrompt = async () => {
     process.exit(0);
   }
 
-  // Active CLI
   const stdin = process.openStdin();
 
   write();
