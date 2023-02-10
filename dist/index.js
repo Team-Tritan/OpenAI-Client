@@ -14,7 +14,7 @@ const config_1 = require("./config");
 let configuration = new openai_1.Configuration({ apiKey: config_1.apiKey });
 let openai = new openai_1.OpenAIApi(configuration);
 if (process.argv.length < 2) {
-    console.error("Bad Usage: node index.ts <prompt>");
+    console.error("Bad Usage: npm start <prompt>");
     process.exit(1);
 }
 let prompt = "";

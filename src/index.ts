@@ -8,7 +8,7 @@ let configuration = new Configuration({ apiKey: apiKey });
 let openai = new OpenAIApi(configuration);
 
 if (process.argv.length < 2) {
-  console.error("Bad Usage: node index.ts <prompt>");
+  console.error("Bad Usage: npm start <prompt>");
   process.exit(1);
 }
 
