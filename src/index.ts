@@ -23,7 +23,7 @@ for (let i = 2; i < process.argv.length; i++) {
       model: "text-davinci-003",
       prompt: prompt,
       temperature: 0,
-      max_tokens: 4096,
+      max_tokens: 1024,
     });
 
     console.log("Prompt: " + prompt);
