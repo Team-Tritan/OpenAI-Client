@@ -18,6 +18,7 @@ export default class Memory {
   public static writeMemory(message: string): void {
     // "rolling memory" function that will keep the last 30 messages in memory
     this.chats.push(message);
+
     if (this.chats.length > this.limit) {
       this.chats.pop();
     }
@@ -29,8 +30,7 @@ export default class Memory {
    * @example
    * Memory.writeMemory('Hello, world!');
    *
-   * let memory = Memory.getMemory();
-   * console.log(memory);
+   * console.log(Memory.getMemory());
    * // => 'Hello, world!'
    */
   public static getMemory(): string {
