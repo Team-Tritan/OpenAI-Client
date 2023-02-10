@@ -26,8 +26,7 @@ class Memory {
      * @example
      * Memory.writeMemory('Hello, world!');
      *
-     * let memory = Memory.getMemory();
-     * console.log(memory);
+     * console.log(Memory.getMemory());
      * // => 'Hello, world!'
      */
     static getMemory() {
