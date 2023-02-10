@@ -1,39 +1,55 @@
 "use strict";
 
 import { Configuration, OpenAIApi } from "openai";
-import { apiKey } from "./config";
+import Config from "./config";
 
-let configuration = new Configuration({ apiKey: apiKey });
+class OpenAI {
+  private openai: OpenAIApi;
+  private config = new Config();
 
-let openai = new OpenAIApi(configuration);
+  constructor() {
+    let configuration = new Configuration({ apiKey: this.config.apiKey });
+    this.openai = new OpenAIApi(configuration);
+  }
 
-if (process.argv.length < 2) {
-  console.error("Bad Usage: npm start <prompt>");
-  process.exit(1);
-}
+  async complete(prompt: string) {
+    try {
+      let completion = await this.openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: prompt,
+        temperature: 0,
+        max_tokens: 1024,
+      });
 
-let prompt = "";
-for (let i = 2; i < process.argv.length; i++) {
-  prompt += process.argv[i] + " ";
-}
+      let res = completion.data.choices[0].text.replace(/\n/g, " ");
+      res = res.replace(/^\s+/, "");
 
-(async () => {
-  try {
-    const completion = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: prompt,
-      temperature: 0,
-      max_tokens: 1024,
-    });
-
-    console.log("Prompt: " + prompt);
-    console.log(completion.data.choices[0].text);
-  } catch (error: Error | any) {
-    if (error.response) {
-      console.error(error.response.status);
-      return console.error(error.response.data);
-    } else {
-      return console.error(error.message);
+      return res;
+    } catch (error: Error | any) {
+      if (error.response) {
+        console.error(error.response.status);
+        return console.error(error.response.data);
+      } else {
+        return console.error(error.message);
+      }
     }
   }
-})();
+}
+
+function handlePrompt() {
+  if (process.argv.length < 2) {
+    console.error("Bad Usage: npm start <prompt>");
+    process.exit(1);
+  }
+
+  let prompt = "" as string;
+  for (let i = 2; i < process.argv.length; i++) {
+    prompt += process.argv[i] + " ";
+  }
+
+  new OpenAI().complete(prompt).then((res) => {
+    console.log(`Prompt: ${prompt}` + "\n" + `Response: ${res}`);
+  });
+}
+
+handlePrompt();
