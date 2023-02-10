@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -26,6 +26,10 @@ class OpenAI {
                     temperature: 0,
                     max_tokens: 1024
                 });
+                if (!completion.data.choices[0].text) {
+                    console.error('No response from OpenAI');
+                    process.exit(1);
+                }
                 let res = completion.data.choices[0].text.replace(/\n/g, ' ');
                 res = res.replace(/^\s+/, '');
                 return res;

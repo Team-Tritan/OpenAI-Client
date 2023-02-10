@@ -1,5 +1,3 @@
-'use strict';
-
 import { Configuration, OpenAIApi } from 'openai';
 import Config from './config';
 
@@ -20,6 +18,11 @@ class OpenAI {
         temperature: 0,
         max_tokens: 1024
       });
+
+      if (!completion.data.choices[0].text) {
+        console.error('No response from OpenAI');
+        process.exit(1);
+      }
 
       let res = completion.data.choices[0].text.replace(/\n/g, ' ');
       res = res.replace(/^\s+/, '');
