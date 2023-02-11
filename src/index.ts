@@ -1,4 +1,4 @@
-import Memory from './lib/memory';
+import MemoryStore from './lib/MemoryStore';
 import OpenAI, { write } from './lib/OpenAI';
 
 (async () => {
@@ -25,15 +25,15 @@ import OpenAI, { write } from './lib/OpenAI';
 
   stdin.addListener('data', async d => {
     let input = d.toString().trim();
-    Memory.writeMemory(`User: ${input}`);
+    MemoryStore.writeMemory(`User: ${input}`);
 
-    const memories = Memory.getMemory();
+    const memories = MemoryStore.getMemory();
     const prompt = `\nHuman: ${input}`;
 
     const final = memories + prompt;
 
     let res = await AI.complete(final);
-    Memory.writeMemory(`Bot: ${res}`);
+    MemoryStore.writeMemory(`Bot: ${res}`);
 
     console.log(` => ${res}`);
 
