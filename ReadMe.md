@@ -12,7 +12,7 @@ Have nodejs installed, and/or typescript!
 
 Install dependancies
 
-- `yarn install` or `npm install`
+- `yarn` or `npm install`
 
 Build typescript to javascript
 
