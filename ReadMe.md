@@ -6,6 +6,8 @@ Davinci-003
 
 Have nodejs installed, and/or typescript!
 
+- Fill out `./src/config.ts`
+
 - `yarn add typescript ts-node -g` or `npm i typescript ts-node -g`
 
 Install dependancies
